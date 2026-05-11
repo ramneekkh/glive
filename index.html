@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCB Simulator & Voice Agent</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (for UI icons) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="glass-header">
+            <div class="logo">
+                <span class="brand-text">SCB</span> <span class="sub-text">Simulator</span>
+            </div>
+            <div class="user-profile">
+                <i data-lucide="user" class="icon"></i>
+                <span>สวัสดี, สมชาย</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content-area">
+            <!-- API Key Input Section (Crucial for demo) -->
+            <section class="card api-key-section">
+                <h3><i data-lucide="key" class="icon"></i> Gemini API Key</h3>
+                <p>กรุณากรอก API Key เพื่อใช้งาน Voice Agent</p>
+                <div class="input-group">
+                    <input type="password" id="apiKeyInput" placeholder="AIzaSy...">
+                    <button id="saveKeyBtn" class="btn-primary">บันทึก</button>
+                </div>
+                <small class="note">คีย์จะถูกเก็บไว้ในเบราว์เซอร์ของคุณเท่านั้น</small>
+            </section>
+
+            <!-- Account Card -->
+            <section class="card account-card">
+                <div class="card-glow"></div>
+                <div class="account-info">
+                    <span class="label">บัญชีออมทรัพย์</span>
+                    <span class="account-number">xxx-x-x7890-x</span>
+                    <h1 class="balance">฿ 1,234,567.89</h1>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-icon"><i data-lucide="arrow-up-right"></i><span>โอนเงิน</span></button>
+                    <button class="btn-icon"><i data-lucide="qr-code"></i><span>สแกน</span></button>
+                    <button class="btn-icon"><i data-lucide="credit-card"></i><span>จ่ายบิล</span></button>
+                </div>
+            </section>
+
+            <!-- Quick Services Grid -->
+            <section class="services-grid">
+                <div class="card service-item">
+                    <i data-lucide="piggy-bank" class="icon-large"></i>
+                    <span>เงินฝาก</span>
+                </div>
+                <div class="card service-item">
+                    <i data-lucide="landmark" class="icon-large"></i>
+                    <span>สินเชื่อ</span>
+                </div>
+                <div class="card service-item">
+                    <i data-lucide="trending-up" class="icon-large"></i>
+                    <span>การลงทุน</span>
+                </div>
+                <div class="card service-item">
+                    <i data-lucide="shield" class="icon-large"></i>
+                    <span>ประกัน</span>
+                </div>
+            </section>
+
+            <!-- Recent Transactions -->
+            <section class="card transactions-card">
+                <h3>รายการล่าสุด</h3>
+                <div class="transaction-list">
+                    <div class="tx-item">
+                        <div class="tx-icon circle-icon"><i data-lucide="shopping-bag"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">เซเว่น อีเลฟเว่น</span>
+                            <span class="tx-time">วันนี้, 14:20</span>
+                        </div>
+                        <span class="tx-amount negative">-฿ 120.00</span>
+                    </div>
+                    <div class="tx-item">
+                        <div class="tx-icon circle-icon positive"><i data-lucide="arrow-down-left"></i></div>
+                        <div class="tx-details">
+                            <span class="tx-title">รับโอนจาก สมศรี</span>
+                            <span class="tx-time">เมื่อวาน, 09:15</span>
+                        </div>
+                        <span class="tx-amount positive">+฿ 1,500.00</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Voice Agent Floating Button -->
+        <div class="voice-agent-container">
+            <button id="voiceAgentBtn" class="btn-voice pulse">
+                <i data-lucide="mic" class="icon-mic"></i>
+            </button>
+            <span class="voice-label">คุยกับน้อง SCB</span>
+        </div>
+
+        <!-- Voice Agent Overlay (Appears when active) -->
+        <div id="agentOverlay" class="overlay hidden">
+            <div class="agent-card glass">
+                <div class="agent-header">
+                    <div class="agent-avatar">
+                        <div class="pulse-ring"></div>
+                        <i data-lucide="bot" class="icon-bot"></i>
+                    </div>
+                    <h2>น้อง SCB AI</h2>
+                    <p id="agentStatus">กำลังเชื่อมต่อ...</p>
+                </div>
+                
+                <!-- Chat Transcript (Optional but helpful) -->
+                <div class="chat-transcript" id="chatTranscript">
+                    <div class="message system">สวัสดีค่ะ มีอะไรให้ช่วยคะ?</div>
+                </div>
+
+                <div class="agent-controls">
+                    <button id="stopAgentBtn" class="btn-danger">วางสาย</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="faq.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
